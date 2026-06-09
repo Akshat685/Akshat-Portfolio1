@@ -1,0 +1,39 @@
+FlowBoard — Multi-Tenant SaaS Project Management Dashboard
+
+PROJECT OVERVIEW
+----------------
+FlowBoard is a personal full-stack SaaS project management tool designed for teams and companies to sign in, create workspaces, and manage projects and tasks collaboratively. It is built with a modern stack focused on performance, security, and real-time collaboration.
+
+KEY FEATURES
+------------
+- Multi-tenant workspace architecture with strict data isolation between companies/teams.
+- Role-based access control for Admin, Member, and Viewer roles.
+- GraphQL API using Apollo Client and Apollo Server for efficient data fetching.
+- PostgreSQL database schema designed with Prisma ORM to support workspaces, projects, tasks, users, and permissions.
+- Real-time task updates and progress tracking for teams working together.
+- Sanity CMS integration for dynamic changelog and announcement pages, enabling non-technical content updates.
+
+TECH STACK
+----------
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React.js
+- GraphQL
+- Apollo Client & Apollo Server
+- Prisma ORM
+- PostgreSQL
+- Sanity CMS
+- Node.js
+
+PROJECT HIGHLIGHTS
+------------------
+- Built both frontend and backend for a complete full-stack SaaS experience.
+- Designed secure multi-user workspaces with isolated company data.
+- Implemented role-based access to safely manage user permissions.
+- Added dynamic content support using Sanity CMS for release notes and announcements.
+- Created a responsive dashboard for project and task monitoring with clear project summaries.
+
+NOTES
+-----
+This overview file is ready to download and use as supporting documentation for the FlowBoard project. Deployment and hosting steps can be added manually as needed.
