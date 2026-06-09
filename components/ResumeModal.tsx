@@ -36,9 +36,7 @@ export default function ResumeModal() {
     };
   }, [isOpen]);
 
-  const closeModal = (e?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
-    if (e && e.currentTarget && e.target !== e.currentTarget) return;
-
+  const closeModal = () => {
     // Animate out
     if (contentRef.current) {
       contentRef.current.style.transform = 'scale(0.92)';
@@ -53,12 +51,17 @@ export default function ResumeModal() {
     }, 250);
   };
 
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target !== e.currentTarget) return;
+    closeModal();
+  };
+
   if (!isOpen) return null;
 
   return (
     <div
       ref={modalRef}
-      onClick={closeModal}
+      onClick={handleOverlayClick}
       className="fixed inset-0 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300"
       style={{
         background: 'rgba(0, 0, 0, 0.75)',
