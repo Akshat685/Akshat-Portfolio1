@@ -125,7 +125,7 @@ export default function Contact() {
         style={{ background: 'linear-gradient(90deg, transparent, rgba(0,245,255,0.3), transparent)' }}
       />
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">06. Contact</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
@@ -256,7 +256,7 @@ export default function Contact() {
 
       {/* Footer */}
       <div className="mt-24 pt-8 border-t border-[rgba(255,255,255,0.05)]">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[var(--text-muted)] text-xs font-mono">
             &copy; {new Date().getFullYear()} Akshat Shettigar. Built with Next.js & Three.js.
           </p>

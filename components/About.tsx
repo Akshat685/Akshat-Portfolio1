@@ -66,7 +66,7 @@ export default function About() {
 
   return (
     <section id="about" ref={sectionRef} className="relative py-32 grid-bg">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Section heading */}
         <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">01. About</p>

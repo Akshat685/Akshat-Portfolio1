@@ -111,7 +111,7 @@ export default function Skills() {
         style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.04) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">02. Skills</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
