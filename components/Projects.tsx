@@ -56,6 +56,7 @@ const projects = [
     tech: ['React', 'TypeScript', 'Node.js', 'Express.js', 'Dropbox API', 'Google API'],
     category: 'Full Stack',
     color: '#00f5ff',
+    link: 'https://fileconverter-6uso.vercel.app/',
     image: 'https://res.cloudinary.com/dzbzwyksl/image/upload/v1782733345/3a64fed0-4074-4b47-a3a7-399705f8e45a.png',
   },
   {
