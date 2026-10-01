@@ -11,23 +11,6 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-              "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-              "img-src 'self' data: blob: res.cloudinary.com images.pexels.com",
-              "font-src 'self' fonts.gstatic.com",
-              "connect-src 'self'",
-              "media-src 'self'",
-              "object-src 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-              "frame-ancestors 'none'",
-              "upgrade-insecure-requests",
-            ].join('; '),
-          },
-          {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
           },
