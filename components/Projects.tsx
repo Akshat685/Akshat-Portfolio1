@@ -88,25 +88,26 @@ const projects = [
     image: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
-    title: 'FlowBoard',
+    title: 'Flowboard — Full-Stack Kanban Task Manager',
     company: 'Personal Project',
     description:
-      'A multi-tenant SaaS project management tool built for teams and companies to collaborate securely across workspaces, projects, and tasks.',
+      'A full-stack task management application for organizing projects with private boards, customizable workflows, and drag-and-drop tasks. Built with the MERN stack, it keeps work synchronized across signed-in sessions.',
     highlights: [
-      'Built a multi-tenant dashboard with workspace isolation and role-based access',
-      'Implemented GraphQL API using Apollo Client and Apollo Server',
-      'Designed PostgreSQL schema with Prisma ORM for scalable project/task data',
-      'Integrated Sanity CMS for dynamic changelog and announcement content',
-      'Enabled real-time task updates and collaborative project tracking',
+      'Built customizable Kanban boards with ready-to-use workflow templates.',
+      'Added task priorities, due dates, labels, and comments.',
+      'Implemented JWT authentication and account-based board access.',
+      'Enabled live updates using Socket.IO and protected against conflicting edits.',
+      'Designed light and dark themes with keyboard-accessible task movement.',
     ],
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'GraphQL', 'Apollo', 'Prisma', 'PostgreSQL', 'Sanity', 'Node.js'],
-    category: 'SaaS',
+    tech: ['React', 'JavaScript', 'CSS', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Socket.IO', 'Vite'],
+    category: 'Full Stack',
     color: '#7c3aed',
+    link: 'https://flowboard-blond.vercel.app/',
     image: 'https://res.cloudinary.com/dzbzwyksl/image/upload/v1782733937/d79b3412-dfb8-4e22-b235-898ee7db8b73.png',
   },
 ];
 
-const categories = ['All', 'AI / RAG', 'Analytics', 'Full Stack', 'Dashboard', 'Health Tech', 'SaaS'];
+const categories = ['All', 'AI / RAG', 'Analytics', 'Full Stack', 'Dashboard', 'Health Tech'];
 
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
