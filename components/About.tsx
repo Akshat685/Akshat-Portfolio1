@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
+import { useSectionAnimation } from '@/hooks/use-section-animation';
 
 const stats = [
   { value: '1+', label: 'Years Experience' },
@@ -23,7 +20,7 @@ export default function About() {
   const rightRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -62,13 +59,13 @@ export default function About() {
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section id="about" ref={sectionRef} className="relative py-32 grid-bg">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section heading */}
-        <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
+        <div ref={headingRef} className="mb-16 text-center">
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">01. About</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Who Am I?
@@ -77,7 +74,7 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left — avatar / card */}
-          <div ref={leftRef} style={{ opacity: 0 }} className="flex flex-col items-center lg:items-start">
+          <div ref={leftRef} className="flex flex-col items-center lg:items-start">
             {/* Avatar placeholder with animated ring */}
             <div className="relative w-52 h-52 mb-8 mx-auto lg:mx-0">
               <div className="absolute inset-0 rounded-full border-2 border-[var(--cyan)] opacity-20 animate-ping" style={{ animationDuration: '3s' }} />
@@ -140,7 +137,7 @@ export default function About() {
           </div>
 
           {/* Right — bio */}
-          <div ref={rightRef} style={{ opacity: 0 }}>
+          <div ref={rightRef}>
             <div className="space-y-5 text-[var(--text-secondary)] leading-relaxed">
               <p>
                 I&apos;m a passionate full-stack developer with expertise in building{' '}
@@ -206,7 +203,7 @@ export default function About() {
             <div
               key={stat.label}
               className="stat-item text-center p-6 rounded-2xl bg-[var(--bg-card)] border border-[rgba(0,245,255,0.08)] card-hover"
-              style={{ opacity: 0 }}
+
             >
               <div className="text-4xl font-bold gradient-text mb-2">{stat.value}</div>
               <div className="text-sm text-[var(--text-muted)]">{stat.label}</div>

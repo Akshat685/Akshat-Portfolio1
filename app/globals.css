@@ -55,11 +55,33 @@ body {
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  cursor: none;
+}
+
+/* A static star field keeps the hero complete without a WebGL download. */
+.hero-starfield {
+  background-image:
+    radial-gradient(circle at 23px 31px, rgba(0, 245, 255, 0.35) 1px, transparent 1.5px),
+    radial-gradient(circle at 71px 89px, rgba(136, 146, 164, 0.4) 1px, transparent 1.5px),
+    radial-gradient(circle at 137px 47px, rgba(136, 146, 164, 0.25) 1px, transparent 2px);
+  background-size: 173px 137px, 251px 211px, 317px 263px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.custom-cursor-active { cursor: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Custom cursor */
 .cursor-dot {
+  display: none;
   width: 8px;
   height: 8px;
   background: var(--cyan);
@@ -72,6 +94,7 @@ body {
 }
 
 .cursor-outline {
+  display: none;
   width: 36px;
   height: 36px;
   border: 1.5px solid var(--cyan);
@@ -82,6 +105,11 @@ body {
   transition: transform 0.3s ease, border-color 0.3s ease;
   opacity: 0.6;
   will-change: transform;
+}
+
+.custom-cursor-active .cursor-dot,
+.custom-cursor-active .cursor-outline {
+  display: block;
 }
 
 .cursor-outline.hovering {

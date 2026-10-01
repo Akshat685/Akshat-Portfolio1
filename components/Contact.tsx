@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useState } from 'react';
+import { useSectionAnimation } from '@/hooks/use-section-animation';
 
 const contactLinks = [
   {
@@ -57,7 +54,7 @@ export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -85,7 +82,7 @@ export default function Contact() {
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -126,7 +123,7 @@ export default function Contact() {
       />
 
       <div className="max-w-7xl mx-auto px-6">
-        <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
+        <div ref={headingRef} className="mb-16 text-center">
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">06. Contact</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Let&apos;s Work Together
@@ -138,7 +135,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left — info */}
-          <div ref={infoRef} style={{ opacity: 0 }}>
+          <div ref={infoRef}>
             <div className="mb-10">
               <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Get In Touch</h3>
               <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
@@ -180,7 +177,7 @@ export default function Contact() {
           </div>
 
           {/* Right — form */}
-          <form ref={formRef} onSubmit={handleSubmit} style={{ opacity: 0 }} className="space-y-5">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-widest">Name</label>

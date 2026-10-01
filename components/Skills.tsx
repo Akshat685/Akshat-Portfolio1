@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
+import { useSectionAnimation } from '@/hooks/use-section-animation';
 
 const skillGroups = [
   {
@@ -57,7 +54,7 @@ export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap, ScrollTrigger) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -101,7 +98,7 @@ export default function Skills() {
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section id="skills" ref={sectionRef} className="relative py-32 bg-[var(--bg-secondary)]">
@@ -112,7 +109,7 @@ export default function Skills() {
       />
 
       <div className="max-w-7xl mx-auto px-6">
-        <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
+        <div ref={headingRef} className="mb-16 text-center">
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">02. Skills</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Technical Arsenal
@@ -128,7 +125,7 @@ export default function Skills() {
             <div
               key={group.category}
               className="skill-group p-7 rounded-2xl bg-[var(--bg-card)] border border-[rgba(255,255,255,0.05)] card-hover"
-              style={{ opacity: 0 }}
+
             >
               <div className="flex items-center gap-3 mb-7">
                 <div
@@ -153,7 +150,7 @@ export default function Skills() {
                         data-width={skill.level}
                         data-delay={(si * 0.06 + gi * 0.1).toFixed(2)}
                         style={{
-                          width: 0,
+                          width: `${skill.level}%`,
                           background: `linear-gradient(90deg, ${group.color}, ${group.color}88)`,
                           boxShadow: `0 0 8px ${group.color}44`,
                         }}
@@ -176,7 +173,7 @@ export default function Skills() {
               <span
                 key={tech}
                 className="tech-badge px-4 py-2 text-sm font-medium text-[var(--text-secondary)] bg-[var(--bg-primary)] border border-[rgba(0,245,255,0.1)] rounded-xl hover:text-[var(--cyan)] hover:border-[rgba(0,245,255,0.35)] hover:bg-[rgba(0,245,255,0.04)] transition-all duration-200 cursor-default"
-                style={{ opacity: 0 }}
+
               >
                 {tech}
               </span>

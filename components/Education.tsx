@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
+import { useSectionAnimation } from '@/hooks/use-section-animation';
 
 const education = [
   {
@@ -49,7 +46,7 @@ export default function Education() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -70,12 +67,12 @@ export default function Education() {
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section id="education" ref={sectionRef} className="relative py-32 grid-bg">
       <div className="max-w-5xl mx-auto px-6">
-        <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
+        <div ref={headingRef} className="mb-16 text-center">
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">05. Education</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Academic Background
@@ -90,7 +87,7 @@ export default function Education() {
             <div
               key={edu.degree}
               className="edu-card relative p-7 rounded-2xl bg-[var(--bg-card)] border border-[rgba(255,255,255,0.05)] card-hover group overflow-hidden"
-              style={{ opacity: 0 }}
+
             >
               {/* Background glow */}
               <div

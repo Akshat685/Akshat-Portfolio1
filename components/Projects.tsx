@@ -1,11 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useSectionAnimation } from '@/hooks/use-section-animation';
 
 const projects = [
   {
@@ -121,7 +118,7 @@ export default function Projects() {
     ? projects
     : projects.filter((p) => p.category === activeCategory);
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -133,9 +130,9 @@ export default function Projects() {
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  });
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.project-card',
@@ -144,7 +141,7 @@ export default function Projects() {
       );
     });
     return () => ctx.revert();
-  }, [activeCategory]);
+  }, activeCategory);
 
   return (
     <section id="projects" ref={sectionRef} className="relative py-32 bg-[var(--bg-secondary)]">

@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
+import { useSectionAnimation } from '@/hooks/use-section-animation';
 
 const experiences = [
   {
@@ -37,7 +34,7 @@ export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useSectionAnimation(sectionRef, (gsap) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -67,12 +64,12 @@ export default function Experience() {
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section id="experience" ref={sectionRef} className="relative py-32 grid-bg">
       <div className="max-w-5xl mx-auto px-6">
-        <div ref={headingRef} className="mb-16 text-center" style={{ opacity: 0 }}>
+        <div ref={headingRef} className="mb-16 text-center">
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">03. Experience</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Work Journey
@@ -89,7 +86,7 @@ export default function Experience() {
               <div
                 key={exp.company}
                 className={`exp-item relative flex flex-col md:flex-row gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                style={{ opacity: 0 }}
+
               >
                 {/* Dot */}
                 <div className="absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[var(--bg-primary)] border-2 border-[var(--cyan)] -translate-x-1.5 md:-translate-x-1/2 mt-6" style={{ zIndex: 1, boxShadow: '0 0 12px rgba(0,245,255,0.5)' }} />
@@ -148,7 +145,7 @@ export default function Experience() {
               <div
                 key={cert}
                 className="cert-item p-5 rounded-xl bg-[var(--bg-card)] border border-[rgba(0,245,255,0.08)] card-hover group text-center"
-                style={{ opacity: 0 }}
+
               >
                 <div className="w-10 h-10 mx-auto mb-3 rounded-lg flex items-center justify-center bg-[rgba(0,245,255,0.08)] border border-[rgba(0,245,255,0.15)] group-hover:border-[rgba(0,245,255,0.35)] transition-colors">
                   <svg className="w-5 h-5 text-[var(--cyan)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

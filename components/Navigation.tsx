@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import { useEffect, useState } from 'react';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -14,21 +13,9 @@ const navItems = [
 ];
 
 export default function Navigation() {
-  const navRef = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        navRef.current,
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.5 }
-      );
-    });
-    return () => ctx.revert();
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +56,6 @@ export default function Navigation() {
 
   return (
     <nav
-      ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'py-3 bg-[rgba(7,8,15,0.92)] backdrop-blur-xl border-b border-[rgba(0,245,255,0.08)]'
