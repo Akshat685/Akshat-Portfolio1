@@ -25,7 +25,9 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline'",
+              // Document requests receive a per-request nonce from middleware.
+              "script-src 'self'",
+              "script-src-attr 'none'",
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
               "img-src 'self' data: blob: res.cloudinary.com images.pexels.com",
               "font-src 'self' fonts.gstatic.com",

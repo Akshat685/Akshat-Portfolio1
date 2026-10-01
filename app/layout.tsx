@@ -8,6 +8,9 @@ const inter = Inter({
   display: 'swap',
 });
 
+// A request-specific CSP nonce cannot be used with cached, prerendered HTML.
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://akshat-shettigar.dev'),
   title: 'Akshat Shettigar | Full Stack Developer',
