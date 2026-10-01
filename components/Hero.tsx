@@ -47,7 +47,7 @@ export default function Hero() {
 
     const canvas = canvasRef.current;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
 
@@ -56,7 +56,7 @@ export default function Hero() {
     camera.position.z = 30;
 
     // Particle geometry — large field of dots
-    const count = 3000;
+    const count = 1500;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
@@ -195,7 +195,7 @@ export default function Hero() {
   // GSAP entrance
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.8 });
+      const tl = gsap.timeline({ delay: 0.2 });
       tl.fromTo(
         headingRef.current,
         { y: 60, opacity: 0, skewY: 3 },
@@ -248,7 +248,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <div ref={headingRef} style={{ opacity: 0 }}>
+        <div ref={headingRef}>
           <p className="text-[var(--cyan)] text-sm font-mono tracking-[0.3em] uppercase mb-4">
             &lt; Hello World /&gt;
           </p>
@@ -259,7 +259,7 @@ export default function Hero() {
           </h1>
         </div>
 
-        <div ref={subRef} style={{ opacity: 0 }} className="mt-6 mb-10">
+        <div ref={subRef} className="mt-6 mb-10">
           <div className="flex items-center justify-center gap-3 text-xl sm:text-2xl font-light text-[var(--text-secondary)]">
             <span className="text-[var(--cyan)]">&gt;</span>
             <span className="font-mono">
@@ -273,7 +273,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div ref={ctaRef} style={{ opacity: 0 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}

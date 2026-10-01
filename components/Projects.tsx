@@ -155,7 +155,7 @@ export default function Projects() {
       />
 
       <div className="max-w-7xl mx-auto px-6">
-        <div ref={headingRef} className="mb-12 text-center" style={{ opacity: 0 }}>
+        <div ref={headingRef} className="mb-12 text-center">
           <p className="text-[var(--cyan)] font-mono text-sm tracking-[0.25em] uppercase mb-3">04. Projects</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Featured Work
@@ -187,7 +187,7 @@ export default function Projects() {
             <div
               key={project.title}
               className="project-card group relative flex flex-col h-full rounded-2xl bg-[var(--bg-card)] border border-[rgba(255,255,255,0.05)] overflow-hidden transition-all duration-400 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] hover:-translate-y-2"
-              style={{ opacity: 0 }}
+
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
             >

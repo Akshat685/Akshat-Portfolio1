@@ -2,10 +2,10 @@
 
 import dynamic from 'next/dynamic';
 import Navigation from '@/components/Navigation';
-import CustomCursor from '@/components/CustomCursor';
-import ScrollProgress from '@/components/ScrollProgress';
 import LoadingScreen from '@/components/LoadingScreen';
 
+const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
+const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'), { ssr: false });
 const Hero = dynamic(() => import('@/components/Hero'), { ssr: false });
 const About = dynamic(() => import('@/components/About'));
 const Skills = dynamic(() => import('@/components/Skills'));
